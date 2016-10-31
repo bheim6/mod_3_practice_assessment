@@ -10,6 +10,12 @@ class DestinationsController < ApplicationController
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+    response = Faraday.get 'http://api.wunderground.com/api/f93f105164487144/forecast10day/q/CO/Denver.json'
+    @info = JSON.parse(response.body, symbolize_names: true)
+    @forecast_days = @info[:forecast][:simpleforecast][:forecastday]
+    @days = @forecast_days.map do |raw_day|
+            ForecastDay.new(raw_day)
+            end
   end
 
   # GET /destinations/new

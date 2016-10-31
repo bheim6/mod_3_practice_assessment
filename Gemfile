@@ -13,10 +13,13 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'figaro'
 gem 'faraday'
+gem 'capybara'
+gem 'launchy'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do
